@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="card1">
+        <h2 class="border-bottom mb-4">Book Details:</h2>
+        <h3 class="border-bottom mb-2">{{ book.name }}</h3>
+        <h6>Author: {{ book.author }}</h6>
+
+        <section style="color:black; font-weight:bold;">
+            <h6>Our users ranked that book: {{ our_avg_rate }}</h6>
+            <p>Publication Year: {{ book.year }}</br>ISBN number: {{ book.book_num }}</br>
+            Avg. Rating by Goodreads: {{ avg_rating }}</br>
+            Total: {{ num_ratings }} votes.</p>
+        </section>
+        <section>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">{{ legend }}</legend>
+                    <div class="form-group">
+                        {{ form.title.label(class="form-control-label") }}
+
+                        {% if form.title.errors %}
+                            {{ form.title(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.title.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.title(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.content.label(class="form-control-label") }}
+
+                        {% if form.content.errors %}
+                            {{ form.content(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.content.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.content(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                </fieldset>
+                <div class="form-group">
+                    <label for="sel">Rate the Book:</label>
+                    <select class="form-control" id="sel" name="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-outline-dark") }}
+                    </div>
+            </form>
+        </section>
+        {% if posts %}
+            <h4 class="border-bottom mb-2">Reviews by Others</h4>
+            {% for post in posts %}
+                <div class="media posts-main">
+                    <img class="rounded-circle account-img" src="{{ url_for('static', filename= 'profile_pics/' + post.author.image_file) }}">
+                    <div class="media-body article-header">
+                        <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a></br>
+                        <small class="text-muted">  Date: {{ post.date_posted.strftime('%d/%m/%Y') }}</small></br>
+                        <h3><a href="{{ url_for('posts.post', post_id=post.id)}}" class="links-custom">{{ post.title }}</a></h3>
+                        <a class="mr-2" href="{{ url_for('posts.book', book_num=post.book.book_num) }}">  Book: {{ post.book.name }}</a></br>
+                        {% if post.rating %}
+                          Book's Rank: <span class="mr-2">{{ post.rating }}/5</span></br>
+                        {% else %}
+                            Book's Rank: None</br>
+                        {% endif %}
+
+
+                       <p style="color: black;">{{ post.content }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+{% endblock content %}

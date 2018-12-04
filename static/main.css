@@ -1,0 +1,107 @@
+body {
+ color: #9e2796;
+ font-size: 12px;
+ overflow-x: hidden;
+}
+
+header {
+  text-align: center;
+  height: 100px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #9e2796;
+}
+nav {
+  overflow: hidden;
+  background-color: #898989;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 14px 16px;
+  color: black;
+}
+
+nav a:hover {
+  background-color: #735375;
+  color: white;
+  text-decoration: none;
+}
+
+.list-group-item {
+  display: block;
+}
+
+.list-group-item:hover {
+  background-color: #898989;
+  display: block;
+}
+
+
+
+a {
+  text-decoration: none;
+  color: #9e2796;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
+}
+.top-sidebar {
+  display: inline-block;
+  overflow: hidden;
+  float: right;
+  flex: shrink;
+}
+
+.top-sidebar>a {
+  float: left;
+  color: #cccccc;
+}
+
+.posts-main {
+    padding: 10px 20px;
+    border: 1px solid #5e3d5b;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+.article-header {
+    margin-top: 5px;
+    color: #661560;
+    padding: 2px;
+}
+
+.article-content {
+    color: #000000;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.card1 {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-right: 17px;
+}
+
+.account-img {
+  height: 80px;
+  width: 80px;
+  margin-left: 4px;
+  margin-right: 10px;
+}
+
+.btn {
+  border: 1px solid #898989;
+}

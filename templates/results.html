@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="card1">
+        <h2 class="border-bottom mb-4">Search Results:</h2>
+        {% if results %}
+            <div class="list-group">
+            {% for result in results %}
+                    <a href="{{ url_for('posts.book', book_num=result.book_num) }}" class="list-group-item list-group-item-action"><h6>{{ result.name }}</h6>
+                    <p>Author: {{ result.author }}</p></a>
+
+            {% endfor %}
+            </div>
+            <p>{{ message }}</p>
+        {% endif %}
+    </div>
+
+
+{% endblock content %}
