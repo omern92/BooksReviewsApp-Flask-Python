@@ -1,3 +1,8 @@
 # Flask Dynamic Books Reviews App
-Flask dynamic website, allowing users to register, post reviews, comment on other's reviews, editing their own profile, and more. API used from goodreads.com.
+Flask dynamic website, including:
+Registration, authentication system, forgot password system.
+User profiles.
+Option to post reviews and rate books, comment on other's reviews.
+List of books and ratings were taken from goodreads API.
+API export with our own reviews.
 Used Python, Postgres.
